@@ -1,4 +1,13 @@
+import styled from "styled-components";
+
 const Home = () => {
-  return <div>home</div>;
+  return <Content>home</Content>;
 };
+
 export default Home;
+
+const Content = styled.main`
+  display: inline-block;
+  position: fixed;
+  top: 70px;
+`;
