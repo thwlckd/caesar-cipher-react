@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./components/Home";
-import CaesarCiper1 from "./components/CaesarCiper1";
-import CaesarCiper2 from "./components/CaesarCiper2";
-import CaesarCiper3 from "./components/CaesarCiper3";
+import CaesarCipher1 from "./components/CaesarCipher1";
+import CaesarCipher2 from "./components/CaesarCipher2";
+import CaesarCipher3 from "./components/CaesarCipher3";
 
 const router = createBrowserRouter([
   {
@@ -11,9 +11,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <Home /> },
-      { path: "cc1", element: <CaesarCiper1 /> },
-      { path: "cc2", element: <CaesarCiper2 /> },
-      { path: "cc3", element: <CaesarCiper3 /> },
+      { path: "cc1", element: <CaesarCipher1 /> },
+      { path: "cc2", element: <CaesarCipher2 /> },
+      { path: "cc3", element: <CaesarCipher3 /> },
     ],
   },
 ]);
