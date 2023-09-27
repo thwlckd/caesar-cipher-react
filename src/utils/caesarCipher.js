@@ -1,7 +1,7 @@
 const alphabetRe = /[a-z]/i;
 
-const caesarCipher1 = (key, msg) => {
-  if (key < 0) return caesarCipher1(key + 26, msg);
+const encryptMsg = (key, msg) => {
+  if (key < 0) return encryptMsg(key + 26, msg);
 
   const encryptedMsg = [...msg].map((char) => {
     if (alphabetRe.test(char)) {
@@ -17,4 +17,4 @@ const caesarCipher1 = (key, msg) => {
   return encryptedMsg;
 };
 
-export { caesarCipher1 };
+export { encryptMsg };

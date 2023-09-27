@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { caesarCipher1 } from "../utils/caesarCipher";
+import { encryptMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
 const CaesarCipher1 = () => {
@@ -8,7 +8,7 @@ const CaesarCipher1 = () => {
   const [encryptedMsg, setEncrypted] = useState();
 
   const handleClickBtn = () => {
-    setEncrypted(caesarCipher1(key, msg));
+    setEncrypted(encryptMsg(key, msg));
   };
 
   return (
