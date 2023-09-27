@@ -1,3 +1,5 @@
+import { validateWord } from "../api/freeDictionaryApi";
+
 const alphabetRe = /[a-z]/i;
 
 const encryptMsg = (key, msg) => {
@@ -14,7 +16,20 @@ const encryptMsg = (key, msg) => {
     return char;
   });
 
-  return encryptedMsg;
+  return encryptedMsg.join("");
 };
 
-export { encryptMsg };
+const decryptMsg = async (key, msg) => {
+  let count = 0;
+  const shiftedMsg = encryptMsg(key, msg);
+  const decryptedMsg = await Promise.all(
+    shiftedMsg.split(" ").map(async (word) => {
+      const result = await validateWord(word);
+      result && count++;
+      return word;
+    })
+  );
+  return { solved: decryptedMsg.join(" "), count };
+};
+
+export { encryptMsg, decryptMsg };

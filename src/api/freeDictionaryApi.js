@@ -2,8 +2,11 @@ import axios from "axios";
 
 async function validateWord(word) {
   try {
-    await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-    return true;
+    const response = await axios.get(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+    );
+    if (Array.isArray(response.data)) return true;
+    else return false;
   } catch {
     return false;
   }

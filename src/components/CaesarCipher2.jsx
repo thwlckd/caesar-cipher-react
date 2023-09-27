@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { validateWord } from "../api/freeDictionaryApi";
+import { decryptMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
 const CaesarCipher2 = () => {
   const [msg, setMsg] = useState();
-  const [decryptedMsg, setDecrypted] = useState();
+  const [decryptedMsg, setDecryptedMsg] = useState();
+  const [isValidCount, setIsValidCount] = useState(0);
+
+  const handleChangeInput = (e) => {
+    setIsValidCount(0);
+    setMsg(e.target.value);
+  };
 
   const handleClickBtn = async () => {
-    console.log(await validateWord(msg));
-    // setDecrypted(await validateWord(msg));
+    for (let i = 0; i < 26; i++) {
+      const { count, solved } = await decryptMsg(i, msg);
+      if (isValidCount < count) {
+        setIsValidCount(() => count);
+        setDecryptedMsg(solved);
+        console.log(solved, isValidCount, count);
+      }
+    }
   };
 
   return (
@@ -20,7 +32,7 @@ const CaesarCipher2 = () => {
             id="msg"
             type="text"
             value={msg}
-            onChange={(e) => setMsg(e.target.value)}
+            onChange={handleChangeInput}
           />
         </div>
         <Btn onClick={handleClickBtn}>Encrypt</Btn>
