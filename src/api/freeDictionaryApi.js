@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function validateWord(word) {
+const validateWord = async (word) => {
   try {
     const response = await axios.get(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -10,6 +10,6 @@ async function validateWord(word) {
   } catch {
     return false;
   }
-}
+};
 
 export { validateWord };
