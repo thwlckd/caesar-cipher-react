@@ -3,9 +3,9 @@ import { shiftMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
 const Encryption = () => {
-  const [key, setKey] = useState();
-  const [msg, setMsg] = useState();
-  const [encryptedMsg, setEncrypted] = useState();
+  const [key, setKey] = useState(0);
+  const [msg, setMsg] = useState("");
+  const [encryptedMsg, setEncrypted] = useState("");
 
   const handleClickBtn = () => {
     setEncrypted(shiftMsg(key, msg));

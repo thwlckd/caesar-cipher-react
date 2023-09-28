@@ -3,24 +3,25 @@ import { decryptMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
 const Decryption = () => {
-  const [msg, setMsg] = useState();
-  const [decryptedMsg, setDecryptedMsg] = useState();
-  const [isValidCount, setIsValidCount] = useState(0);
+  const [msg, setMsg] = useState("");
+  const [decryptedMsg, setDecryptedMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeInput = (e) => {
-    setIsValidCount(0);
     setMsg(e.target.value);
   };
 
   const handleClickBtn = async () => {
+    setIsLoading(true);
+    let maxCount = 0;
     for (let i = 0; i < 26; i++) {
       const { count, solved } = await decryptMsg(i, msg);
-      if (isValidCount < count) {
-        setIsValidCount(() => count);
+      if (maxCount < count) {
+        maxCount = count;
         setDecryptedMsg(solved);
-        console.log(solved, isValidCount, count);
       }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -36,7 +37,7 @@ const Decryption = () => {
           />
         </div>
         <Btn onClick={handleClickBtn}>Encrypt</Btn>
-        {decryptedMsg && <Result>{decryptedMsg}</Result>}
+        <Result>{isLoading ? "Loading..." : decryptedMsg}</Result>
       </Main>
     </MainWrapper>
   );
