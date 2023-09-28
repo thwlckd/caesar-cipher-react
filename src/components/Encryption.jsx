@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { encryptMsg } from "../utils/caesarCipher";
+import { shiftMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
-const CaesarCipher1 = () => {
+const Encryption = () => {
   const [key, setKey] = useState();
   const [msg, setMsg] = useState();
   const [encryptedMsg, setEncrypted] = useState();
 
   const handleClickBtn = () => {
-    setEncrypted(encryptMsg(key, msg));
+    setEncrypted(shiftMsg(key, msg));
   };
 
   return (
@@ -39,7 +39,7 @@ const CaesarCipher1 = () => {
   );
 };
 
-export default CaesarCipher1;
+export default Encryption;
 
 const MainWrapper = styled.main`
   display: inline-block;

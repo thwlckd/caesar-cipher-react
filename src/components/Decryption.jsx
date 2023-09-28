@@ -2,7 +2,7 @@ import { useState } from "react";
 import { decryptMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
-const CaesarCipher2 = () => {
+const Decryption = () => {
   const [msg, setMsg] = useState();
   const [decryptedMsg, setDecryptedMsg] = useState();
   const [isValidCount, setIsValidCount] = useState(0);
@@ -42,7 +42,7 @@ const CaesarCipher2 = () => {
   );
 };
 
-export default CaesarCipher2;
+export default Decryption;
 
 const MainWrapper = styled.main`
   display: inline-block;

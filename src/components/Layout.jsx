@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { FaBurger } from "react-icons/fa6";
 
 const menus = [
-  { title: "Caesar Cipher 1", path: "cc1" },
-  { title: "Caesar Cipher 2", path: "cc2" },
-  { title: "Caesar Cipher 3", path: "cc3" },
+  { title: "Encryption", path: "encryption" },
+  { title: "Decryption", path: "decryption" },
 ];
 
 const Layout = () => {
