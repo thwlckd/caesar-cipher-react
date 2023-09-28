@@ -6,7 +6,7 @@ import Decryption from "./components/Decryption";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/caesar-cipher-react",
     element: <App />,
     children: [
       { path: "", element: <Home /> },
