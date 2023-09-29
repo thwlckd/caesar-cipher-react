@@ -1,7 +1,8 @@
 import { Children, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FaBurger } from "react-icons/fa6";
+import useDarkMode from "../hooks/useDarkMode";
 
 const menus = [
   { title: "Encryption", path: "encryption" },
@@ -10,14 +11,20 @@ const menus = [
 
 const Layout = () => {
   const [isToggleMenu, setIsToggleMenu] = useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <>
       <Header>
         <MenuBtn onClick={() => setIsToggleMenu((prev) => !prev)}>
-          <FaBurger size={30} color="#333842" />
+          <FaBurger size={30} color="inherit" />
         </MenuBtn>
         <Title to={""}>Caesar Cipher App</Title>
+        <DarkModeBtn onClick={toggleDarkMode}>
+          <Toggle darkmode={darkMode}>
+            {darkMode === "dark" ? "🌕" : "🌞"}
+          </Toggle>
+        </DarkModeBtn>
       </Header>
       {isToggleMenu && (
         <MenuBar>
@@ -41,7 +48,6 @@ const Header = styled.header`
   align-items: center;
   width: 100%;
   height: 70px;
-  background-color: #e8eaed;
 `;
 
 const MenuBtn = styled.button`
@@ -49,32 +55,48 @@ const MenuBtn = styled.button`
   left: 0;
   width: 50px;
   height: 50px;
-  border: none;
   border-radius: 50%;
   margin-left: 10px;
   text-align: center;
-  cursor: pointer;
-  background-color: #e8eaed;
-
-  &:hover {
-    background-color: #bdbfc1;
-  }
+  background-color: inherit;
 `;
 
 const Title = styled(Link)`
   border: none;
   font-size: 25px;
   font-weight: bold;
-  color: #333842;
-  background-color: #e8eaed;
+`;
+
+const DarkModeBtn = styled.button`
+  position: absolute;
+  right: 10px;
+  height: 25px;
+  aspect-ratio: 2 / 1;
+  border-radius: 25px;
+
+  &:hover {
+    opacity: 100%;
+  }
+`;
+
+const Toggle = styled.div`
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  ${({ darkmode }) =>
+    darkmode === "dark" &&
+    css`
+      margin-left: 25px;
+    `};
+  transition: 0.3s all;
 `;
 
 const MenuBar = styled.nav`
   display: inline-block;
   width: 150px;
   height: calc(100vh - 70px);
-  border: none;
-  background-color: #bdbfc1;
 `;
 
 const Menu = styled.div`
@@ -82,18 +104,12 @@ const Menu = styled.div`
   height: 50px;
   line-height: 50px;
   text-align: center;
-  border-bottom: 1px solid white;
 `;
 
 const CC = styled(Link)`
   display: block;
   text-decoration: none;
   font-weight: bold;
-  color: #ffffff;
-
-  &:hover {
-    background-color: #333842;
-  }
 `;
 
 export default Layout;

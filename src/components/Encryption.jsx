@@ -3,7 +3,7 @@ import { shiftMsg } from "../utils/caesarCipher";
 import styled from "styled-components";
 
 const Encryption = () => {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState("");
   const [msg, setMsg] = useState("");
   const [encryptedMsg, setEncrypted] = useState("");
 
@@ -19,7 +19,7 @@ const Encryption = () => {
           <Input
             id="key"
             type="number"
-            value={key}
+            value={key || ""}
             onChange={(e) => setKey(Number(e.target.value))}
           />
         </div>
@@ -59,13 +59,13 @@ const Main = styled.div`
 const InputLabel = styled.label`
   margin-right: 10px;
   font-size: 20px;
-  color: #333842;
 `;
 
 const Input = styled.input`
   margin-bottom: 20px;
   font-size: 20px;
-  color: #333842;
+  border-radius: 20px;
+  padding-left: 10px;
 `;
 
 const Btn = styled.button`
@@ -74,18 +74,11 @@ const Btn = styled.button`
   border-radius: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
-  background-color: #bdbfc1;
   cursor: pointer;
-
-  &:hover {
-    background-color: #333842;
-  }
 `;
 
 const Result = styled.div`
   margin-top: 30px;
   font-size: 30px;
   font-weight: bold;
-  color: #333842;
 `;

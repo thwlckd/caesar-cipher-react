@@ -1,3 +1,70 @@
+:root[dark-mode="dark"] {
+  --background-color: #333842;
+  --font-color: #f6f9ff;
+  --btn-bg-color: #434c68;
+  --layout-bg-color: #282c34;
+  --input-bg-color: #606671;
+  transition: all 0.1s linear;
+}
+
+:root[dark-mode="light"] {
+  --background-color: #f6f9ff;
+  --font-color: #333842;
+  --btn-bg-color: #cfdcff;
+  --layout-bg-color: #e5ebf6;
+  --input-bg-color: #adceff;
+  transition: all 0.1s linear;
+}
+
+:root {
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+header,
+nav {
+  background-color: var(--layout-bg-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  transform: scale(1.1);
+  transition: all 0.1s;
+}
+
+button {
+  padding: 0;
+  color: inherit;
+  background-color: var(--btn-bg-color);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input {
+  background-color: var(--input-bg-color);
+  border: none;
+  color: inherit;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid var(--font-color);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
