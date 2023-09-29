@@ -2,6 +2,7 @@ import { Children, useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { FaBurger } from "react-icons/fa6";
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import useDarkMode from "../hooks/useDarkMode";
 
 const menus = [
@@ -16,13 +17,20 @@ const Layout = () => {
   return (
     <>
       <Header>
-        <MenuBtn onClick={() => setIsToggleMenu((prev) => !prev)}>
+        <MenuBtn
+          className="menu-btn"
+          onClick={() => setIsToggleMenu((prev) => !prev)}
+        >
           <FaBurger size={30} color="inherit" />
         </MenuBtn>
         <Title to={""}>Caesar Cipher App</Title>
-        <DarkModeBtn onClick={toggleDarkMode}>
+        <DarkModeBtn className="toggle-btn" onClick={toggleDarkMode}>
           <Toggle darkmode={darkMode}>
-            {darkMode === "dark" ? "🌕" : "🌞"}
+            {darkMode === "dark" ? (
+              <BsMoonFill color="#ffcb00" size="25" />
+            ) : (
+              <BsFillSunFill color="#ffa800" size="25" />
+            )}
           </Toggle>
         </DarkModeBtn>
       </Header>
@@ -82,9 +90,8 @@ const DarkModeBtn = styled.button`
 const Toggle = styled.div`
   height: 100%;
   aspect-ratio: 1 / 1;
-  background-color: white;
   border-radius: 50%;
-  font-size: 20px;
+
   ${({ darkmode }) =>
     darkmode === "dark" &&
     css`
