@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { shiftMsg } from "../utils/caesarCipher";
-import styled from "styled-components";
+import { useState } from 'react';
+import { shiftMsg } from '../utils/caesarCipher';
+import styled from 'styled-components';
 
 const Encryption = () => {
-  const [key, setKey] = useState("");
-  const [msg, setMsg] = useState("");
-  const [encryptedMsg, setEncrypted] = useState("");
+  const [key, setKey] = useState('');
+  const [msg, setMsg] = useState('');
+  const [encryptedMsg, setEncrypted] = useState('');
 
   const handleClickBtn = () => {
     setEncrypted(shiftMsg(key, msg));
@@ -15,19 +15,19 @@ const Encryption = () => {
     <MainWrapper>
       <Main>
         <div>
-          <InputLabel htmlFor="key">Shift value</InputLabel>
+          <InputLabel htmlFor='key'>Shift value</InputLabel>
           <Input
-            id="key"
-            type="number"
-            value={key || ""}
+            id='key'
+            type='number'
+            value={key || ''}
             onChange={(e) => setKey(Number(e.target.value))}
           />
         </div>
         <div>
-          <InputLabel htmlFor="msg">Message to encrypt</InputLabel>
+          <InputLabel htmlFor='msg'>Message to encrypt</InputLabel>
           <Input
-            id="msg"
-            type="text"
+            id='msg'
+            type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
@@ -77,7 +77,7 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const Result = styled.div`
+const Result = styled.p`
   margin-top: 30px;
   font-size: 30px;
   font-weight: bold;

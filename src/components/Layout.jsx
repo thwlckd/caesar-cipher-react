@@ -1,13 +1,13 @@
-import { Children, useState } from "react";
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { FaBurger } from "react-icons/fa6";
-import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
-import useDarkMode from "../hooks/useDarkMode";
+import { Children, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { FaBurger } from 'react-icons/fa6';
+import { BsFillSunFill, BsMoonFill } from 'react-icons/bs';
+import useDarkMode from '../hooks/useDarkMode';
 
 const menus = [
-  { title: "Encryption", path: "encryption" },
-  { title: "Decryption", path: "decryption" },
+  { title: 'Encryption', path: 'encryption' },
+  { title: 'Decryption', path: 'decryption' },
 ];
 
 const Layout = () => {
@@ -18,18 +18,18 @@ const Layout = () => {
     <>
       <Header>
         <MenuBtn
-          className="menu-btn"
+          className='menu-btn'
           onClick={() => setIsToggleMenu((prev) => !prev)}
         >
-          <FaBurger size={30} color="inherit" />
+          <FaBurger size={30} color='inherit' />
         </MenuBtn>
-        <Title to={""}>Caesar Cipher App</Title>
-        <DarkModeBtn className="toggle-btn" onClick={toggleDarkMode}>
+        <Title to={''}>Caesar Cipher App</Title>
+        <DarkModeBtn className='toggle-btn' onClick={toggleDarkMode}>
           <Toggle darkmode={darkMode}>
-            {darkMode === "dark" ? (
-              <BsMoonFill color="#ffcb00" size="25" />
+            {darkMode === 'dark' ? (
+              <BsMoonFill color='#ffcb00' size='25' />
             ) : (
-              <BsFillSunFill color="#ffa800" size="25" />
+              <BsFillSunFill color='#ffa800' size='25' />
             )}
           </Toggle>
         </DarkModeBtn>
@@ -39,7 +39,7 @@ const Layout = () => {
           {Children.toArray(
             menus.map(({ title, path }) => (
               <Menu>
-                <CC to={path}>{title}</CC>
+                <MenuLink to={path}>{title}</MenuLink>
               </Menu>
             ))
           )}
@@ -93,7 +93,7 @@ const Toggle = styled.div`
   border-radius: 50%;
 
   ${({ darkmode }) =>
-    darkmode === "dark" &&
+    darkmode === 'dark' &&
     css`
       margin-left: 25px;
     `};
@@ -113,7 +113,7 @@ const Menu = styled.div`
   text-align: center;
 `;
 
-const CC = styled(Link)`
+const MenuLink = styled(Link)`
   display: block;
   text-decoration: none;
   font-weight: bold;

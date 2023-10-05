@@ -1,4 +1,4 @@
-:root[dark-mode="dark"] {
+:root[dark-mode='dark'] {
   --background-color: #333842;
   --font-color: #f6f9ff;
   --btn-bg-color: #434c68;
@@ -7,7 +7,7 @@
   transition: all 0.1s linear;
 }
 
-:root[dark-mode="light"] {
+:root[dark-mode='light'] {
   --background-color: #f6f9ff;
   --font-color: #333842;
   --btn-bg-color: #cfdcff;
@@ -75,14 +75,18 @@ input::-webkit-inner-spin-button {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main {
+  overflow: auto;
 }

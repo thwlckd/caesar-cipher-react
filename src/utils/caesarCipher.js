@@ -1,6 +1,5 @@
-import { validateWord } from "../api/freeDictionaryApi";
-
-const alphabetRe = /[a-z]/i;
+import { alphabetRe, exceptReg } from '../constance/regularExpress.js';
+import { words } from '../constance/words.js';
 
 const shiftMsg = (key, msg) => {
   if (key < 0) return shiftMsg(key + 26, msg);
@@ -16,20 +15,16 @@ const shiftMsg = (key, msg) => {
     return char;
   });
 
-  return encryptedMsg.join("");
+  return encryptedMsg.join('');
 };
 
-const decryptMsg = async (key, msg) => {
-  let count = 0;
-  const shiftedMsg = shiftMsg(key, msg);
-  const decryptedMsg = await Promise.all(
-    shiftedMsg.split(" ").map(async (word) => {
-      const isValidWord = await validateWord(word);
-      isValidWord && count++;
-      return word;
-    })
-  );
-  return { solved: decryptedMsg.join(" "), count };
+const decryptMsg = (key, msg) => {
+  const shiftedWords = shiftMsg(key, msg).split(' ');
+  const count = shiftedWords.filter((word) =>
+    words.includes(word.toLowerCase().replace(exceptReg, ''))
+  ).length;
+
+  return { count, solved: shiftedWords.join(' ') };
 };
 
 export { shiftMsg, decryptMsg };

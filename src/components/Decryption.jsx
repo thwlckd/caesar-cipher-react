@@ -1,43 +1,40 @@
-import { useState } from "react";
-import { decryptMsg } from "../utils/caesarCipher";
-import styled from "styled-components";
+import { useState } from 'react';
+import { decryptMsg } from '../utils/caesarCipher';
+import styled from 'styled-components';
 
 const Decryption = () => {
-  const [msg, setMsg] = useState("");
-  const [decryptedMsg, setDecryptedMsg] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [decryptedMsg, setDecryptedMsg] = useState('');
 
   const handleChangeInput = (e) => {
     setMsg(e.target.value);
   };
 
-  const handleClickBtn = async () => {
-    setIsLoading(true);
+  const handleClickBtn = () => {
     let maxCount = 0;
     for (let i = 0; i < 26; i++) {
-      const { count, solved } = await decryptMsg(i, msg);
+      const { count, solved } = decryptMsg(i, msg);
       if (maxCount < count) {
         maxCount = count;
         setDecryptedMsg(solved);
       }
     }
-    setIsLoading(false);
   };
 
   return (
     <MainWrapper>
       <Main>
         <div>
-          <InputLabel htmlFor="msg">Message to decrypt</InputLabel>
+          <InputLabel htmlFor='msg'>Message to decrypt</InputLabel>
           <Input
-            id="msg"
-            type="text"
+            id='msg'
+            type='text'
             value={msg}
             onChange={handleChangeInput}
           />
         </div>
-        <Btn onClick={handleClickBtn}>Encrypt</Btn>
-        <Result>{isLoading ? "Loading..." : decryptedMsg}</Result>
+        <Btn onClick={handleClickBtn}>Decrypt</Btn>
+        <Result>{decryptedMsg}</Result>
       </Main>
     </MainWrapper>
   );
@@ -80,7 +77,7 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const Result = styled.div`
+const Result = styled.p`
   margin-top: 30px;
   font-size: 30px;
   font-weight: bold;
