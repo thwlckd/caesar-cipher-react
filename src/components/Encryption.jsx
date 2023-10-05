@@ -45,8 +45,7 @@ const MainWrapper = styled.main`
   display: inline-block;
   position: fixed;
   top: 70px;
-  width: calc(100vw - 150px);
-  height: calc(100vh - 70px);
+  min-width: calc(100vw - 150px);
   padding-top: 30px;
 `;
 

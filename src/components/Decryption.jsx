@@ -11,14 +11,7 @@ const Decryption = () => {
   };
 
   const handleClickBtn = () => {
-    let maxCount = 0;
-    for (let i = 0; i < 26; i++) {
-      const { count, solved } = decryptMsg(i, msg);
-      if (maxCount < count) {
-        maxCount = count;
-        setDecryptedMsg(solved);
-      }
-    }
+    setDecryptedMsg(decryptMsg(msg));
   };
 
   return (
@@ -46,8 +39,7 @@ const MainWrapper = styled.main`
   display: inline-block;
   position: fixed;
   top: 70px;
-  width: calc(100vw - 150px);
-  height: calc(100vh - 70px);
+  min-width: calc(100vw - 150px);
   padding-top: 30px;
 `;
 

@@ -18,13 +18,26 @@ const shiftMsg = (key, msg) => {
   return encryptedMsg.join('');
 };
 
-const decryptMsg = (key, msg) => {
+const countValidWords = (key, msg) => {
   const shiftedWords = shiftMsg(key, msg).split(' ');
   const count = shiftedWords.filter((word) =>
     words.includes(word.toLowerCase().replace(exceptReg, ''))
   ).length;
 
-  return { count, solved: shiftedWords.join(' ') };
+  return { count, shifedMsg: shiftedWords.join(' ') };
+};
+
+const decryptMsg = (msg) => {
+  const decryptedData = { count: 0, message: '' };
+  for (let i = 0; i < 26; i++) {
+    const { count, shifedMsg } = countValidWords(i, msg);
+    if (decryptedData.count < count) {
+      decryptedData.count = count;
+      decryptedData.message = shifedMsg;
+    }
+  }
+
+  return decryptedData.message;
 };
 
 export { shiftMsg, decryptMsg };
