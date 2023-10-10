@@ -37,7 +37,12 @@ const decryptMsg = (msg) => {
     }
   }
 
-  return decryptedData.message;
+  if (
+    decryptedData.count === 0 ||
+    decryptedData.message.split(' ').lenght / 2 > decryptedData.count
+  )
+    return 'Not a valid sentence!';
+  else return decryptedData.message;
 };
 
 export { shiftMsg, decryptMsg };
