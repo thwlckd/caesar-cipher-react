@@ -1,6 +1,6 @@
 import { Children, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { FaBurger } from 'react-icons/fa6';
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 import useDarkMode from '../hooks/useDarkMode';
@@ -34,8 +34,8 @@ const Layout = () => {
           </Toggle>
         </DarkModeBtn>
       </Header>
-      {isToggleMenu && (
-        <MenuBar>
+      {
+        <MenuBar toggle={isToggleMenu}>
           {Children.toArray(
             menus.map(({ title, path }) => (
               <Menu>
@@ -44,7 +44,7 @@ const Layout = () => {
             ))
           )}
         </MenuBar>
-      )}
+      }
     </>
   );
 };
@@ -106,6 +106,31 @@ const MenuBar = styled.nav`
   width: 150px;
   height: calc(100vh - 70px);
   z-index: 1;
+
+  ${({ toggle }) =>
+    toggle
+      ? css`
+          animation: slideIn 0.3s forwards;
+          @keyframes slideIn {
+            from {
+              transform: translateX(-100%);
+            }
+            to {
+              transform: translateX(0);
+            }
+          }
+        `
+      : css`
+          animation: slideOut 0.3s forwards;
+          @keyframes slideOut {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+        `}
 `;
 
 const Menu = styled.div`
