@@ -38,9 +38,10 @@ export default Decryption;
 const MainWrapper = styled.main`
   display: inline-block;
   position: fixed;
-  top: 70px;
-  min-width: calc(100vw - 150px);
+  left: 50%;
+  transform: translateX(-50%);
   padding-top: 30px;
+  width: 100%;
 `;
 
 const Main = styled.div`
@@ -70,7 +71,8 @@ const Btn = styled.button`
 `;
 
 const Result = styled.p`
-  margin-top: 30px;
-  font-size: 30px;
-  font-weight: bold;
+  width: 50%;
+  font-size: 25px;
+  word-break: break-all;
+  text-align: center;
 `;

@@ -101,9 +101,11 @@ const Toggle = styled.div`
 `;
 
 const MenuBar = styled.nav`
+  position: relative;
   display: inline-block;
   width: 150px;
   height: calc(100vh - 70px);
+  z-index: 1;
 `;
 
 const Menu = styled.div`
