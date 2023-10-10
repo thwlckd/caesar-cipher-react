@@ -42,6 +42,7 @@ const MainWrapper = styled.main`
   transform: translateX(-50%);
   padding-top: 30px;
   width: 100%;
+  height: calc(100vh - 70px);
 `;
 
 const Main = styled.div`
@@ -75,4 +76,5 @@ const Result = styled.p`
   font-size: 25px;
   word-break: break-all;
   text-align: center;
+  padding-bottom: 50px;
 `;
